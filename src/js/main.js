@@ -3,6 +3,7 @@
 // === 1. ORTAK MODÜLLERİ İÇERİ AL ===
 import { setupModal } from './modal.js';
 import { setupTeamModal } from './team-modal.js';
+import { initHeader } from './header.js'; // <-- Header modülünü çağırdık
 import './mobile-nav.js';
 import './theme-toggle.js';
 
@@ -10,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- A. Ortak Bileşenleri Başlat ---
   const { openModal } = setupModal();
   window.openMovieModal = openModal;
+  
   setupTeamModal();
+  initHeader(); // <-- Header active link ayarını çalıştır
 
   // --- B. Sayfa Yönlendirme (Routing) ---
   const path = window.location.pathname;
@@ -24,29 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     moduleName = 'index.js';
   }
 
-  // --- C. Navbar Aktif Link Ayarı (EKLENEN KISIM) ---
-  // Hangi sayfadaysak o linke 'active' sınıfını ekle
-  const navLinks = document.querySelectorAll('.nav-link');
 
-  navLinks.forEach(link => {
-    link.classList.remove('active'); // Önce hepsini temizle
-    const href = link.getAttribute('href');
 
-    // 1. Home Kontrolü (Ana sayfa veya index.html)
-    if ((path === '/' || path.includes('index.html')) && href.includes('index.html')) {
-      link.classList.add('active');
-    }
-    // 2. Catalog Kontrolü
-    else if (path.includes('catalog') && href.includes('catalog')) {
-      link.classList.add('active');
-    }
-    // 3. Library Kontrolü
-    else if (path.includes('library') && href.includes('library')) {
-      link.classList.add('active');
-    }
-  });
-
-  // --- D. Modülü Yükle ---
+  // --- C. Modülü Yükle ---
   if (moduleName) {
     import(`./${moduleName}`)
       .then(() => console.log(`${moduleName} yüklendi.`))

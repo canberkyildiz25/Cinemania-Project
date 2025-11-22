@@ -1,0 +1,174 @@
+/* =============================
+   3. HEADER VE NAVİGASYON
+============================== */
+.site-header {
+  background-color: var(--hero-color);
+  padding: 20px 0;
+  position: relative;
+  z-index: 1000; /* Mobil menüden yüksek olmalı */
+  transition: background-color 0.3s;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10000; /* Mobil menü açıldığında bile üstte kalması için */
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+
+.logo span {
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: 8px;
+  transition: color 0.3s;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-orange);
+}
+
+/* =============================
+   4. TEMA DEĞİŞTİRİCİ (TOGGLE)
+============================== */
+.theme-switcher {
+  position: relative;
+  z-index: 10000; /* Mobil menü açıldığında bile üstte kalması için */
+}
+.switch {
+  --switch-w: 60px;
+  --switch-h: 28px;
+  --circle-size: 22px;
+  --switch-padding: 5px;
+  --switch-buffer: 10px;
+  position: relative;
+  display: inline-block;
+  width: var(--switch-w);
+  height: var(--switch-h);
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #ffa500, #ff4500);
+  border-radius: calc(var(--switch-h) * 2);
+  transition: 0.4s;
+  overflow: hidden;
+}
+.slider .icon-sun,
+.slider .icon-moon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--primary-white);
+  z-index: 1;
+}
+.slider .icon-moon {
+  left: 6px;
+  stroke-width: 2.3;
+}
+.slider .icon-sun {
+  right: 6px;
+  stroke-width: 2.5;
+}
+.slider-circle-container {
+  position: absolute;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  /* Daireyi CSS ile çiziyoruz: */
+  background-color: #ffffff; /* Beyaz renk */
+  border-radius: 50%; /* Tam yuvarlak */
+  /* -------------------------- */
+  top: calc((var(--switch-h) - var(--circle-size)) / 2);
+  left: calc(var(--switch-w) - var(--circle-size) - var(--switch-padding));
+  transition: all 0.28s ease;
+  z-index: 2;
+  /* Gölge ekleyerek daha belirgin yapabilirsin (isteğe bağlı) */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.slider-circle-white {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+.slider-circle-orange {
+  position: absolute;
+  width: 5px;
+  height: 30px;
+  left: 15px;
+  top: -4px;
+  stroke: #ff7a00;
+  fill: none;
+  transform-origin: center;
+  transition: all 0.4s ease;
+  transform: rotate(0deg);
+}
+input:checked + .slider .slider-circle-orange {
+  left: 4px;
+  top: -4px;
+  transform: rotate(180deg);
+}
+input:checked + .slider .slider-circle-container {
+  transform: translateX(
+    calc(-1 * (var(--switch-w) - var(--circle-size) - var(--switch-buffer)))
+  );
+}
+
+/* --- HEADER RESPONSIVE (En alta ekle) --- */
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 18px 0;
+  }
+  .logo span {
+    display: none; /* Mobilde logo yazısını gizle, sadece ikon kalsın */
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 14px 0;
+  }
+  .header-container {
+    gap: 8px;
+  }
+  /* Switch küçültme */
+  .switch {
+    transform: scale(0.8);
+  }
+}

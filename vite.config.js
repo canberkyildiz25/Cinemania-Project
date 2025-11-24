@@ -6,7 +6,7 @@ export default defineConfig(({ command }) => {
   return {
     // ... diğer ayarların ...
     
-    // BURAYI EKLE: GitHub Repo adını buraya yaz
+    // GitHub Repo adını buraya yaz
     base: "/Cinemania-Project/", 
 
     root: "src", 

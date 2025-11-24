@@ -1,11 +1,11 @@
 // src/js/index.js
-import { showLoader, hideLoader } from './loader.js';
-import { fetchTrendingMovies, fetchUpcomingMovies } from './movies-data.js';
+import { showLoader, hideLoader } from '../common/loader.js';
+import { fetchTrendingMovies, fetchUpcomingMovies } from '../modal/movies-data.js';
 import {
   renderMovieCard,
   updateHeroWithMovie,
   renderUpcomingSection,
-} from './ui-helpers.js';
+} from '../common/ui-helpers.js';
 
 // Initialize home page
 async function initHomePage() {

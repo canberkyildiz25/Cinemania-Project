@@ -4,22 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cinemania - My Library</title>
-  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <load src="./partials/header.html" />
-
- 
-<load src="./partials/my-library-content.html" />
-  <load src="./partials/footer.html" />
-  <load src="./partials/team-modal.html" />
-  <load src="./partials/trailer-error-modal.html" />
-  <load src="./partials/trailer-modal.html" />
-  <load src="./partials/movie-details-modal.html" />
+   <header>
+<load src="/partials/header/header.html" />
+</header>
+  <main>
+    <load src="/partials/home/home-content.html" />
   
+  <load src="/partials/modal/trailer-error-modal.html" />
+  <load src="/partials/modal/trailer-modal.html" />
+  <load src="/partials/modal/movie-details-modal.html" />
+  </main>
 
-  <script type="module" src="./js/main.js"></script>
-<script type="module" src="./js/my-library.js"></script> </body>
+  
+<footer>
+  <load src="/partials/footer/footer.html" />
+  <load src="/partials/footer/team-modal.html" />
+</footer>
+
+  <script type="module" src="/js/common/main.js"></script>
+<script type="module" src="/js/my-library/my-library.js"></script> </body>
 </body>
 </html>

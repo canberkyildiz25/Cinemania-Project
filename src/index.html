@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinemania</title>
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
+  </noscript>
+
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="icon" href="./images/favicon.svg" />
+</head>
+
+<body>
+  <header>
+    <load src="./components/header/header.html"></load>
+  </header>
+
+  <main>
+    <load src="./components/hero/hero.html"></load>
+    <load src="./components/weekly/weekly.html"></load>
+    <load src="./components/upcoming/upcoming.html"></load>
+    <load src="./components/modal/modal.html"></load>
+  </main>
+  <footer>
+    <load src="./components/footer/footer.html"></load>
+  </footer>
+  <load src="./components/loader/loader.html"></load>
+  <button id="scroll-up" title="Scroll Up" class="button-up">↑</button>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

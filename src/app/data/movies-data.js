@@ -16,11 +16,36 @@ async function fetchFromAPI(endpoint, params = {}) {
   }
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors', // CORS modunu açıkça belirt
+    });
     if (!res.ok) throw new Error(`API Error: ${res.status}`);
     return await res.json();
   } catch (err) {
     console.error('API Request Failed:', err);
+    // CORS hatası için alternatif proxy dene
+    if (err.message.includes('CORS') || err.message.includes('NetworkError')) {
+      console.warn('CORS issue detected, trying proxy...');
+      return await fetchWithProxy(url.toString());
+    }
+    return null;
+  }
+}
+
+// Proxy ile fetch fonksiyonu (CORS sorunları için)
+async function fetchWithProxy(url) {
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Ücretsiz proxy, production'da kendi proxy'nizi kullanın
+  try {
+    const res = await fetch(proxyUrl + url);
+    if (!res.ok) throw new Error(`Proxy API Error: ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error('Proxy Request Failed:', err);
     return null;
   }
 }

@@ -25,19 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
       path === '/Cinemania-Project/' ||
       path === '/Cinemania-Project');
 
-  let moduleName = null;
-  let modulePath = null;
-
-  if (isCatalog) {
-    moduleName = 'catalog.js';
-    modulePath = '../pages/catalog/catalog.js';
-  } else if (isLibrary) {
-    moduleName = 'my-library.js';
-    modulePath = '../pages/my-library/my-library.js';
-  } else if (isHome) {
-    moduleName = 'index.js';
-    modulePath = '../pages/home/index.js';
-  }
+  const moduleLoaders = {
+    home: () => import('../pages/home/index.js'),
+    catalog: () => import('../pages/catalog/catalog.js'),
+    library: () => import('../pages/my-library/my-library.js'),
+  };
 
   // Navbar aktif linki işaretle
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -54,9 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Sayfa modülünü yükle
-  if (modulePath) {
-    import(modulePath)
-      .then(() => console.log(`${moduleName} yüklendi.`))
-      .catch(err => console.error(`${moduleName} yüklenirken hata:`, err));
+  const loader = isCatalog ? moduleLoaders.catalog : isLibrary ? moduleLoaders.library : isHome ? moduleLoaders.home : null;
+  if (loader) {
+    loader()
+      .then(() => console.log('Sayfa modülü yüklendi.'))
+      .catch(err => console.error('Sayfa modülü yüklenirken hata:', err));
   }
 });

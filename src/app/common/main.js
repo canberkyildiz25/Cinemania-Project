@@ -1,10 +1,12 @@
 // src/app/common/main.js
 
-// Ortak modalleri ve temayı hazırla
 import { setupModal } from '../components/modal/modal.js';
 import { setupTeamModal } from '../components/team-modal/team-modal.js';
 import '../layout/mobile-nav/mobile-nav.js';
 import './theme-toggle.js';
+
+// Vite'in statik analiz edebilmesi için sayfa modüllerini glob ile tanımla
+const pageModules = import.meta.glob('../pages/**/{index,catalog,my-library}.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const { openModal } = setupModal();
@@ -26,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
       path === '/Cinemania-Project');
 
   const moduleLoaders = {
-    home: () => import('../pages/home/index.js'),
-    catalog: () => import('../pages/catalog/catalog.js'),
-    library: () => import('../pages/my-library/my-library.js'),
+    home: () => pageModules['../pages/home/index.js']?.(),
+    catalog: () => pageModules['../pages/catalog/catalog.js']?.(),
+    library: () => pageModules['../pages/my-library/my-library.js']?.(),
   };
 
   // Navbar aktif linki işaretle
@@ -46,7 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Sayfa modülünü yükle
-  const loader = isCatalog ? moduleLoaders.catalog : isLibrary ? moduleLoaders.library : isHome ? moduleLoaders.home : null;
+  const loader = isCatalog
+    ? moduleLoaders.catalog
+    : isLibrary
+      ? moduleLoaders.library
+      : isHome
+        ? moduleLoaders.home
+        : null;
+
   if (loader) {
     loader()
       .then(() => console.log('Sayfa modülü yüklendi.'))

@@ -1,0 +1,44 @@
+/* =============================
+   INDEX.CSS - ANA SAYFA ÖZEL
+============================== */
+
+/* --- Hero Alanı --- */
+/* Anasayfa hero'su için varsayılan arkaplan (JS yüklenene kadar) */
+#home-hero {
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* =============================
+   UPCOMING SECTION (RESPONSIVE)
+============================== */
+
+/* --------------------------------------------------
+   TABLET (768px ve altı) & MOBİL (320px ve üstü)
+   Görseldeki tasarıma geçiş
+--------------------------------------------------- */
+
+/* =============================
+   LIGHT MODE (Index Özel)
+============================== */
+body.light-mode .detail-key {
+  color: #555;
+}
+body.light-mode .detail-value {
+  color: #000;
+}
+body.light-mode .rating-badge {
+  background-color: var(--primary-orange);
+  color: var(--primary-white);
+}
+body.light-mode .section-header h2,
+body.light-mode .upcoming-section h2,
+body.light-mode .upcoming-info h3 {
+  color: var(--light-text);
+}
+body.light-mode .about-text {
+  color: #555;
+}
+/* Hero'nun light modda değişmemesi kuralı common.css'e taşındı */

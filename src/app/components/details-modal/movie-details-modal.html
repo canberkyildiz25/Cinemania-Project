@@ -1,0 +1,58 @@
+<!-- ================= MOVIE DETAILS MODAL (BAŞLANGIÇ) ================= -->
+<div class="modal-backdrop is-hidden" id="movie-modal-backdrop">
+  <div class="modal-window">
+
+    <!-- Kapatma butonu -->
+    <button type="button" class="modal-close-btn" id="modal-close-btn">&times;</button>
+
+    <!-- Detay içeriği -->
+    <div class="modal-content">
+
+      <!-- Poster -->
+      <div class="modal-poster-wrapper">
+        <img src="" alt="Movie Poster" class="modal-poster" id="modal-poster" />
+      </div>
+
+      <!-- Sağ taraf bilgi alanı -->
+      <div class="modal-info">
+        <h2 class="modal-title" id="modal-title"></h2>
+
+        <!-- Grid halinde film bilgileri -->
+        <div class="modal-details-grid">
+
+          <div class="detail-row">
+            <span class="detail-label">Vote / Votes</span>
+            <div class="detail-value">
+              <span class="vote-tag" id="modal-vote-avg"></span>
+              <span class="slash">/</span>
+              <span class="vote-tag" id="modal-vote-count"></span>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-label">Popularity</span>
+            <span class="detail-value" id="modal-popularity"></span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-label">Genre</span>
+            <span class="detail-value" id="modal-genre"></span>
+          </div>
+
+        </div>
+
+        <!-- ABOUT başlığı -->
+        <h3 class="modal-about-title">ABOUT</h3>
+
+        <!-- Film açıklaması -->
+        <p class="modal-description" id="modal-description"></p>
+
+        <!-- Buton -->
+        <button type="button" class="btn-modal-add" id="modal-add-btn">Add to my library</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ================= MOVIE DETAILS MODAL (BİTİŞ) ================= -->

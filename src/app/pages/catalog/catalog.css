@@ -1,0 +1,63 @@
+/* =============================
+   CATALOG.CSS - KATALOG ÖZEL
+============================== */
+
+#catalog-hero {
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Light Mode (Catalog Özel) */
+body.light-mode #catalog-hero .hero-content h1,
+body.light-mode #catalog-hero .hero-content p,
+body.light-mode #catalog-hero .star-rating {
+  color: var(--primary-white) !important;
+}
+body.light-mode .search-bar,
+body.light-mode .search-dropdown {
+  background-color: var(--light-header-bg);
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+body.light-mode .search-dropdown option {
+  background-color: var(--light-header-bg);
+  color: var(--light-text);
+}
+body.light-mode .pagination-arrow,
+body.light-mode .pagination-btn {
+  border-color: var(--light-border);
+  color: var(--text-grey);
+}
+body.light-mode .pagination-arrow:hover,
+body.light-mode .pagination-btn:hover {
+  border-color: var(--light-text);
+  color: var(--light-text);
+}
+body.light-mode .pagination-btn.active {
+  background-color: var(--primary-orange);
+  color: var(--primary-black);
+  border-color: var(--primary-orange);
+}
+
+/* --- CUSTOM DROPDOWN (Year Filter) --- */
+
+
+/* Light Mode Ayarları */
+body.light-mode .dropdown-header {
+  background-color: var(--light-header-bg);
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+body.light-mode .dropdown-list {
+  background-color: #fff;
+  border-color: var(--light-border);
+}
+body.light-mode .dropdown-item {
+  color: #333;
+}
+body.light-mode .dropdown-item:hover {
+  background-color: var(--primary-orange);
+  color: #fff;
+}

@@ -1,0 +1,107 @@
+/* =============================
+   7. FİLM KARTI (GENEL)
+============================== */
+.movie-grid-container {
+  display: grid;
+  /* Masaüstünde 3 sütun */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  aspect-ratio: 2 / 3; /* Poster oranı (en/boy) */
+  background-color: #222; /* Resim yüklenene kadar yer tutucu */
+}
+
+.movie-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+}
+
+.movie-card-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Kartın altındaki bilgi alanı (gradient overlay) */
+.movie-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px 15px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  color: #fff;
+}
+
+.movie-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-genre {
+  font-size: 13px;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px; /* Rating ile çakışmasın */
+}
+
+.movie-rating {
+  color: #ff6b00;
+  font-size: 13px;
+  flex-shrink: 0; /* Küçülmesin */
+}
+
+.movie-rating .fa-star {
+  margin-left: 2px;
+  color: #ff6b00;
+}
+
+.movie-rating .fa-star.far {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* --- MOVIE CARD GRID RESPONSIVE (En alta ekle) --- */
+
+/* Tablet: 2 Sütun */
+@media (max-width: 768px) {
+  .movie-grid-container {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 22px;
+  }
+}
+
+/* Mobil: 1 Sütun */
+@media (max-width: 480px) {
+  .movie-grid-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

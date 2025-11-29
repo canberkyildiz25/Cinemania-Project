@@ -1,0 +1,12 @@
+/* --- "Daha Fazla Yükle" Butonu --- */
+.load-more-container {
+  padding: 20px 0 40px 0;
+  text-align: center;
+}
+.load-more-container.is-hidden {
+  display: none;
+}
+.load-more-btn {
+  padding: 12px 32px;
+  font-size: 14px;
+}

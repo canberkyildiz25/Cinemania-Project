@@ -1,0 +1,30 @@
+/* =============================
+   MY-LIBRARY.CSS - KÜTÜPHANE ÖZEL
+============================== */
+
+/* Hero alanı (Kütüphane) */
+#library-hero .hero-content {
+  min-height: 200px;
+}
+
+/* İçerik alanı */
+.library-content-section {
+  padding: 40px 0;
+}
+/* Kütüphane boş mesajı */
+.library-message {
+  font-size: 18px;
+  color: var(--text-grey);
+  text-align: center;
+  padding: 80px 20px;
+  grid-column: 1 / -1; /* Grid'in tamamını kapla */
+}
+
+/* =============================
+   LIGHT MODE (Library Özel)
+============================== */
+
+body.light-mode .library-message {
+  color: var(--light-text);
+}
+/* Hero'nun light modda değişmemesi kuralı common.css'e taşındı */

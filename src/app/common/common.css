@@ -1,0 +1,234 @@
+/* =============================
+   COMMON.CSS - ORTAK STİLLER
+   (Tüm sayfalar için geçerli)
+============================== */
+
+/* =============================
+   1. ROOT DEĞİŞKENLERİ
+============================== */
+:root {
+  --primary-orange: #ff6b08;
+  --primary-black: #121212;
+  --primary-white: #ffffff;
+  --text-grey: #b7b7b7;
+  --header-border: #222222;
+  --toggle-bg: #4b4848;
+  --card-border-active: #30b5e5;
+  --hero-color: #000000;
+  /* Light Mode Renkleri */
+  --light-bg: #f5f5ff;
+  --light-text: #111111;
+  --light-header-bg: #ffffff;
+  --light-card-bg: #ffffff;
+  --light-border: #dddddd;
+}
+
+/* =============================
+   2. TEMEL SIFIRLAMA VE GENEL ETİKETLER
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Modal açıkken sayfanın kaymasını engeller */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* JS ile element gizlemek için */
+.is-hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =============================
+   6. BUTONLAR VE YILDIZLAR (GENEL)
+============================== */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+}
+
+.btn-primary {
+  background-color: var(--primary-orange);
+  color: var(--primary-black);
+}
+
+.btn-primary:hover {
+  background-color: #ff8c40;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-white);
+  border: 1px solid var(--primary-white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+}
+
+.star-rating {
+  display: flex;
+  gap: 4px;
+  color: var(--primary-orange);
+}
+
+.star-rating.hero-stars {
+  margin-bottom: 16px;
+}
+
+/* =============================
+   13. LIGHT MODE (AYDINLIK MOD)
+============================== */
+
+/* --- Genel Light Mode Ayarları --- */
+body.light-mode {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+body.light-mode .site-header {
+  background-color: var(--light-header-bg);
+  border-bottom: 1px solid var(--light-border);
+}
+body.light-mode .logo span,
+body.light-mode .nav-link {
+  color: var(--light-text);
+}
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.active {
+  color: var(--primary-orange);
+}
+body.light-mode .movie-card {
+  background-color: var(--light-card-bg);
+  border: 1px solid var(--light-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+body.light-mode .movie-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+body.light-mode .movie-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0)
+  );
+}
+body.light-mode .movie-title {
+  color: var(--light-text);
+}
+body.light-mode .movie-genre {
+  color: #555;
+}
+body.light-mode .site-footer {
+  border-top-color: var(--light-border);
+  color: #555;
+}
+
+/* --- Hero Light Mode Ayarı --- */
+body.light-mode .hero-section .hero-content h1,
+body.light-mode .hero-section .hero-content .hero-title,
+body.light-mode .hero-section .hero-content p,
+body.light-mode .hero-section .hero-content .hero-description {
+  color: var(--primary-white) !important;
+}
+body.light-mode .hero-section .star-rating,
+body.light-mode .hero-section .star-rating .fa-star {
+  color: var(--primary-orange) !important;
+}
+
+/* --- Modal Light Mode Ayarları --- */
+body.light-mode .modal-window {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+}
+body.light-mode .modal-title {
+  color: #000000 !important;
+}
+body.light-mode .modal-description {
+  color: #333333 !important;
+}
+body.light-mode .detail-value {
+  color: #000000 !important;
+}
+body.light-mode .modal-about-title {
+  color: #666666 !important;
+}
+body.light-mode .detail-label {
+  color: #555 !important;
+}
+body.light-mode .vote-tag {
+  background-color: #eee !important;
+  color: #000 !important;
+}
+body.light-mode .modal-close-btn {
+  color: #000 !important;
+}
+body.light-mode .modal-close-btn:hover {
+  color: var(--primary-orange) !important;
+}
+body.light-mode .btn-modal-add {
+  color: #000 !important;
+  border-color: var(--primary-orange) !important;
+}
+body.light-mode .btn-modal-add:hover {
+  background-color: var(--primary-orange) !important;
+  color: #fff !important;
+}
+
+/* --- Trailer Modal Light Mode Ayarları --- */
+body.light-mode .trailer-error-window {
+  background-color: #ffffff !important;
+  border-color: #ddd !important;
+  color: #000 !important;
+}
+body.light-mode .trailer-error-text h2,
+body.light-mode .trailer-error-text p {
+  color: #000000 !important;
+}
+/* --- GLOBAL RESPONSIVE --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+}

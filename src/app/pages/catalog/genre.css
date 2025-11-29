@@ -1,0 +1,66 @@
+.custom-dropdown {
+  position: relative; /* Listenin buna göre konumlanması için şart */
+  width: 150px;
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: transparent;
+  border: 1px solid var(--text-grey);
+  border-radius: 30px;
+  color: var(--text-grey);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+/* Header Hover ve Aktif Durumları */
+.dropdown-header:hover,
+.custom-dropdown.active .dropdown-header {
+  border-color: var(--primary-orange);
+  color: var(--primary-white);
+}
+
+/* Ok İşareti Döndürme Animasyonu */
+.custom-dropdown.active .dropdown-header i {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* --- AŞAĞI AÇILAN LİSTE --- */
+.dropdown-list {
+  position: absolute;
+  top: 100%; /* Header'ın tam altına yapıştır */
+  left: 0;
+  width: 100%;
+  max-height: 300px; /* Maksimum yükseklik (bundan sonrası scroll olur) */
+  overflow-y: auto; /* Scroll bar ekle */
+  background-color: #111; /* Koyu arka plan */
+  border: 1px solid var(--primary-orange);
+  border-radius: 12px;
+  margin-top: 8px;
+  z-index: 100; /* Diğer öğelerin üstünde görünsün */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Liste Öğeleri */
+.dropdown-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: var(--text-grey);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--primary-orange);
+  color: #000;
+}

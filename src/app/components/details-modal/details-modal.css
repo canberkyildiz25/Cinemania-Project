@@ -1,0 +1,196 @@
+/* =============================
+   8. MODAL (FİLM DETAY)
+============================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Arkaplanı karart */
+  backdrop-filter: blur(3px); /* Arkadaki siteyi bulanıklaştır */
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 99999; /* Header ve her şeyin üstünde olsun */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto; /* Mobilde modal taşarsa scroll olsun */
+}
+
+/* JS ile .is-hidden sınıfı eklenince gizle */
+.modal-backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 2. Modal Penceresi (Beyaz/Siyah Kutu) */
+.modal-window {
+  position: relative;
+  background-color: #111; /* Koyu tema arka planı */
+  width: 800px;
+  max-width: 100%;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0px 0px 25px rgba(255, 107, 8, 0.4); /* Turuncu gölge */
+  color: #fff;
+  /* Animasyon */
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.modal-backdrop.is-hidden .modal-window {
+  transform: scale(0.8); /* Kapanırken küçülerek kaybolsun */
+}
+
+/* Kapatma Butonu (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  padding: 5px;
+  z-index: 10;
+}
+.modal-close-btn:hover {
+  color: var(--primary-orange);
+  transform: scale(1.1);
+}
+
+/* 3. Film Detay Modal İçeriği */
+.modal-content {
+  display: flex;
+  gap: 30px;
+}
+
+.modal-poster-wrapper {
+  flex-shrink: 0;
+}
+
+.modal-poster {
+  width: 240px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.modal-info {
+  flex-grow: 1;
+}
+
+.modal-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.modal-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.detail-label {
+  width: 140px;
+  color: #8c8c8c;
+}
+
+.detail-value {
+  color: #fff;
+}
+
+.vote-tag {
+  background-color: #fff;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.slash {
+  margin: 0 5px;
+}
+
+.modal-about-title {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.modal-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.btn-modal-add {
+  background-color: transparent;
+  border: 1px solid var(--primary-orange);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.btn-modal-add:hover {
+  background-color: var(--primary-orange);
+  color: #000;
+}
+
+/* --- DETAILS MODAL RESPONSIVE (En alta ekle) --- */
+
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column; /* Yan yana değil alt alta */
+    align-items: center;
+  }
+  .modal-poster {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+  .modal-info {
+    text-align: center;
+  }
+  .detail-row {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-window {
+    width: 96%;
+    padding: 20px 16px;
+    max-height: 85vh; /* Ekran taşmasın */
+    overflow-y: auto;
+  }
+  .modal-title {
+    font-size: 24px;
+  }
+  .detail-label {
+    width: 100px;
+  }
+}
